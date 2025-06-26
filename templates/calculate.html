@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pacing Results</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: url("{{ url_for('static', filename='background.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        h1, h2 {
+            color: #222;
+        }
+
+        .dataframe {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            table-layout: fixed;
+        }
+
+        .dataframe th, .dataframe td {
+            padding: 14px 18px;
+            border: 1px solid #e0e0e0;
+            word-wrap: break-word;
+        }
+
+        .dataframe th {
+            background-color: #f0f4f8;
+            color: #444;
+            font-weight: 600;
+        }
+
+        .dataframe td {
+            color: #555;
+        }
+
+        ul {
+            padding-left: 1.25rem;
+        }
+
+        ul li {
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 2rem;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Marathon Pacing Summary</h1>
+        <h2>Marathon Time Goal: {{ marathon_time_display }}</h2>
+        <h2>Required Marathon Pace: {{ required_pace }}</h2>
+        {{ table_html | safe }}
+
+        <h2 style="margin-top: 2rem;">Assumptions</h2>
+        <ul>
+            {% for item in assumptions %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+
+        <a href="/" class="back-link">&larr; Back to Input</a>
+    </div>
+</body>
+</html>

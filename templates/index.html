@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Marathon Goal Input</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: url("{{ url_for('static', filename='background.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .form-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem 3rem;
+            border-radius: 16px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #222;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #444;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-card">
+        <h1>Set Your Pacing Input</h1>
+        <form action="/calculate" method="post">
+            <label for="input-type">Input Type:</label>
+            <select name="input_type" id="input-type" required onchange="toggleInputs()">
+                <option value="goal">Marathon Goal Time</option>
+                <option value="mile_trial">1-Mile Time Trial</option>
+            </select>
+
+            <div id="goal-inputs">
+                <label for="hours">Goal Hours:</label>
+                <input type="number" name="hours" id="hours" min="0">
+
+                <label for="minutes">Goal Minutes:</label>
+                <input type="number" name="minutes" id="minutes" min="0" max="59">
+            </div>
+
+            <div id="mile-inputs" class="hidden">
+                <label for="mile_minutes">1-Mile Time Trial Minutes:</label>
+                <input type="number" name="mile_minutes" id="mile_minutes" min="0">
+
+                <label for="mile_seconds">1-Mile Time Trial Seconds:</label>
+                <input type="number" name="mile_seconds" id="mile_seconds" min="0" max="59">
+            </div>
+
+            <button type="submit">Calculate Pacing</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleInputs() {
+            const type = document.getElementById('input-type').value;
+            document.getElementById('goal-inputs').classList.toggle('hidden', type !== 'goal');
+            document.getElementById('mile-inputs').classList.toggle('hidden', type !== 'mile_trial');
+        }
+    </script>
+</body>
+</html>

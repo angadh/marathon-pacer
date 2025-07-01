@@ -19,4 +19,4 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 # Expose ports
 EXPOSE 5001
 
-CMD ["gunicorn", "--config", "gunicorn_configs.py", "-b", "0.0.0.0:5001", "app:app"]
+CMD ["gunicorn", "--config", "gunicorn_config.py", "-b", "0.0.0.0:5001", "app:app"]

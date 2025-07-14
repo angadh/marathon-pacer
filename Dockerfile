@@ -1,22 +1,12 @@
-# Use the official Python 3.11 base image
-FROM python:3.11-slim-bookworm
+FROM python:3.11-slim
 
-# Install Python 3 and its development headers, and pip
-RUN apt-get update && \
-    apt-get install -y python3 python3-pip nginx gcc g++ make && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-# Set the working directory in the container
 WORKDIR /app
 
-# Copy your application code into the container
-COPY . /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Install any Python dependencies
-RUN pip3 install --no-cache-dir -r requirements.txt
+COPY . .
+RUN apt-get update && apt-get install -y nginx procps && rm -rf /var/lib/apt/lists/*
+RUN chmod +x docker-entrypoint.sh
 
-# Expose ports
-EXPOSE 5001
-
-CMD ["gunicorn", "--config", "gunicorn_config.py", "-b", "0.0.0.0:5001", "app:app"]
+CMD ["/bin/bash", "docker-entrypoint.sh"]

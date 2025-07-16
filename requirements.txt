@@ -6,3 +6,4 @@ pep8==1.7.1
 pandas==2.2.3
 notebook==7.4.2
 gunicorn==20.1.0
+certbot==2.10.0

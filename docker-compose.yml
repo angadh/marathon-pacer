@@ -2,7 +2,14 @@ services:
   marathon-pacer:
     build: .
     ports:
-      - "80:5000" # Use port 80 for EC2 (default)
+      - "80:5000"
+      - "443:5000"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/www/certbot
     container_name: marathon-pacer
+
+volumes:
+  certbot-etc:
+  certbot-var:

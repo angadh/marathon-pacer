@@ -5,5 +5,7 @@ black==24.10.0
 pep8==1.7.1
 pandas==2.2.3
 notebook==7.4.2
-gunicorn==20.1.0
+gunicorn==21.2.0
 certbot==2.10.0
+croniter==1.4.1
+josepy==1.13.0

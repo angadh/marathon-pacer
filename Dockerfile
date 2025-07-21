@@ -7,13 +7,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN apt-get update && apt-get install -y nginx certbot cron procps && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y nginx procps && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /etc/nginx/conf.d && rm -f /etc/nginx/conf.d/*
-
-RUN mkdir -p /var/www/certbot
-
-RUN mkdir -p /var/www/certbot/.well-known/acme-challenge
 
 RUN chmod +x docker-entrypoint.sh
 

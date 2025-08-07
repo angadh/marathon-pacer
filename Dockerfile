@@ -7,9 +7,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-RUN apt-get update && apt-get install -y nginx procps && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y nginx procps gcc linux-libc-dev musl-tools && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /etc/nginx/conf.d && rm -f /etc/nginx/conf.d/*
+
+ENV FLASK_RUN_HOST=0.0.0.0
+EXPOSE 5000
 
 RUN chmod +x docker-entrypoint.sh
 

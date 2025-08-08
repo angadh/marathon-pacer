@@ -8,6 +8,7 @@ sleep 10
 certbot certonly --webroot \
     --webroot-path=/var/www/certbot \
     --email angadh.singh@gmail.com --agree-tos --no-eff-email \
-    -d marathon-pacer.com
+    -d marathon-pacer.com \
+    --force-renewal
 
 echo "[INFO] Certificate obtained successfully. NGINX is configured for HTTPS."

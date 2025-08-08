@@ -5,4 +5,4 @@ set -e
 gunicorn -c gunicorn_config.py wsgi:app &
 
 # Start Nginx
-# nginx -g "daemon off;
+nginx -g "daemon off;"

@@ -27,7 +27,7 @@
 
         h1 {
             text-align: center;
-            color: #222;
+            color: #1e293b;
             margin-bottom: 1.5rem;
         }
 
@@ -35,20 +35,27 @@
             font-weight: 600;
             display: block;
             margin-bottom: 0.5rem;
-            color: #444;
+            color: #334155;
         }
 
         input, select {
             width: 100%;
             padding: 10px;
             margin-bottom: 1.5rem;
-            border: 1px solid #ccc;
+            border: 1px solid #cbd5e1;
             border-radius: 8px;
             font-size: 16px;
+            transition: border-color 0.2s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
         button {
-            background-color: #007bff;
+            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
             color: white;
             padding: 12px 20px;
             border: none;
@@ -57,10 +64,13 @@
             cursor: pointer;
             width: 100%;
             font-weight: 600;
+            transition: all 0.2s ease;
         }
 
         button:hover {
-            background-color: #0056b3;
+            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
 
         .hidden {

@@ -163,8 +163,8 @@ def calculate():
         target_time = training_pace * training_distance 
         training_speeds.append({
             'Distance': distance,
-            'Target Time': format_timedelta(target_time),
             'Target Pace': format_timedelta(training_pace),
+            'Target Time': format_timedelta(target_time),
         })
     
     training_speeds_df = pd.DataFrame(training_speeds)

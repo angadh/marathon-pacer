@@ -31,6 +31,36 @@
             margin-bottom: 1.5rem;
         }
 
+        .toggle-container {
+            display: flex;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #e2e8f0;
+        }
+
+        .toggle-option {
+            flex: 1;
+            padding: 12px 20px;
+            background: #f8fafc;
+            color: #64748b;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            font-size: 16px;
+        }
+
+        .toggle-option.active {
+            background: linear-gradient(135deg, #20b2aa 0%, #008b8b 100%);
+            color: white;
+        }
+
+        .toggle-option:hover:not(.active) {
+            background: #e2e8f0;
+            color: #334155;
+        }
+
         label {
             font-weight: 600;
             display: block;
@@ -50,8 +80,8 @@
 
         input:focus, select:focus {
             outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            border-color: #20b2aa;
+            box-shadow: 0 0 0 3px rgba(32, 178, 170, 0.1);
         }
 
         .optional-note {
@@ -63,7 +93,7 @@
         }
 
         button {
-            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+            background: linear-gradient(135deg, #20b2aa 0%, #008b8b 100%);
             color: white;
             padding: 12px 20px;
             border: none;
@@ -76,9 +106,9 @@
         }
 
         button:hover {
-            background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            background: linear-gradient(135deg, #008b8b 0%, #006666 100%);
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 12px rgba(32, 178, 170, 0.3);
         }
 
         .hidden {
@@ -90,11 +120,12 @@
     <div class="form-card">
         <h1>Set Your Pacing Input</h1>
         <form action="/calculate" method="post">
-            <label for="input-type">Input Type:</label>
-            <select name="input_type" id="input-type" required onchange="toggleInputs()">
-                <option value="goal">Marathon Goal Time</option>
-                <option value="mile_trial">1-Mile Time Trial</option>
-            </select>
+            <div class="toggle-container">
+                <button type="button" class="toggle-option active" onclick="toggleInputs('goal')">Marathon Goal</button>
+                <button type="button" class="toggle-option" onclick="toggleInputs('mile_trial')">Mile Time Trial</button>
+            </div>
+
+            <input type="hidden" name="input_type" id="input_type" value="goal">
 
             <div id="goal-inputs">
                 <label for="hours">Goal Hours:</label>
@@ -105,10 +136,10 @@
             </div>
 
             <div id="mile-inputs" class="hidden">
-                <label for="mile_minutes">1-Mile Time Trial Minutes:</label>
+                <label for="mile_minutes">Minutes:</label>
                 <input type="number" name="mile_minutes" id="mile_minutes" min="0">
 
-                <label for="mile_seconds">1-Mile Time Trial Seconds:</label>
+                <label for="mile_seconds">Seconds:</label> 
                 <input type="number" name="mile_seconds" id="mile_seconds" min="0" max="59">
             </div>
 
@@ -121,8 +152,17 @@
     </div>
 
     <script>
-        function toggleInputs() {
-            const type = document.getElementById('input-type').value;
+        function toggleInputs(type) {
+            // Update toggle button states
+            document.querySelectorAll('.toggle-option').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update hidden input value
+            document.getElementById('input_type').value = type;
+            
+            // Show/hide appropriate input sections
             document.getElementById('goal-inputs').classList.toggle('hidden', type !== 'goal');
             document.getElementById('mile-inputs').classList.toggle('hidden', type !== 'mile_trial');
         }

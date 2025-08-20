@@ -143,7 +143,6 @@ def calculate():
         '5k': 3.1,
         '10k': 6.2,
         'Half Marathon': 13.1,
-        'Full Marathon': 26.2
     }
     training_speeds = []    
     for distance, training_distance in training_distances.items():
@@ -155,8 +154,6 @@ def calculate():
             training_pace = magic_mile_pace * 1.15
         elif distance == 'Half Marathon':
             training_pace = magic_mile_pace * 1.2
-        elif distance == 'Full Marathon':
-            training_pace = magic_mile_pace * 1.3
         else:
             raise ValueError(f"Invalid distance: {distance}")
 

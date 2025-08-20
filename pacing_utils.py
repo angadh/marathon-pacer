@@ -3,15 +3,14 @@ import datetime
 MARATHON_MILESTONES = {
     '5k': {'distance': 3.1, 'notes': 'First checkpoint - settle into pace'},
     '10k': {'distance': 6.2, 'notes': 'Quarter mark - energy still high'},
-    '15k': {'distance': 9.3, 'notes': '15k mark - maintain rhythm'},
-    '13.1K': {'distance': 13.1, 'notes': 'Halfway point - halfway there!'},
-    '25k': {'distance': 15.5, 'notes': '25k mark - getting serious'},
-    '20 Mile': {'distance': 20.0, 'notes': 'The Wall - push through'},
-    '22 Mile': {'distance': 22.0, 'notes': '22 mile - almost there'},
-    '23 Mile': {'distance': 23.0, 'notes': '23 mile - final push'},
-    '24 Mile': {'distance': 24.0, 'notes': '24 mile - home stretch'},
-    '25 Mile': {'distance': 25.0, 'notes': '25 mile - final mile'},
-    'Finish': {'distance': 26.2, 'notes': 'Marathon complete!'}
+    '15k': {'distance': 9.3, 'notes': 'Maintain rhythm'},
+    'Half Marathon': {'distance': 13.1, 'notes': 'Halfway there!'},
+    '25k': {'distance': 15.5, 'notes': 'Getting serious'},
+    '20 Mile': {'distance': 20.0, 'notes': 'The Wall - Push through!'},
+    '5k to finish': {'distance': 23.0, 'notes': 'Final push'},
+    '2 miles to go': {'distance': 24.2, 'notes': 'Home stretch'},
+    '1 mile to go': {'distance': 25.2, 'notes': 'Last mile!'},
+    'Finish': {'distance': 26.2, 'notes': 'Marathon complete!!!'}
 }
 
 def race_times(hours=0, minutes=0, seconds=0):
@@ -31,10 +30,10 @@ def format_timedelta(td):
     result_str = f"{seconds:02d}s"
 
     if hours > 0:
-        result_str = f"{hours:d}h:{minutes:02d}m:{seconds:02d}s"
+        result_str = f"{hours:d}h {minutes:02d}m {seconds:02d}s"
     else:
         if minutes > 0:
-            result_str = f"{minutes:d}m:{seconds:02d}s"
+            result_str = f"{minutes:d}m {seconds:02d}s"
     return result_str
 
 

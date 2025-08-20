@@ -141,7 +141,7 @@ def calculate():
         "calculate.html",
         table_html=table_html,
         milestones_html=milestones_html,
-        walk_interval_note=f"Walk Interval: {format_timedelta(WALK_INTERVAL)} at {format_timedelta(WALK_SPEED)}/mile",
+        walk_interval_note=f"Walk Interval = {format_timedelta(WALK_INTERVAL)} at a speed of {format_timedelta(WALK_SPEED)}/mile",
         assumptions=assumptions,
         marathon_time_display=format_timedelta(desired_time),
         required_pace=format_timedelta(desired_pace),

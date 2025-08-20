@@ -2,5 +2,5 @@
 Gunicorn configuration file.
 """
 
-bind = "0.0.0.0:5001"
-workers = 2
+bind = "0.0.0.0:5000"
+workers = 8

@@ -54,6 +54,14 @@
             box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
         }
 
+        .optional-note {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: -1rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
         button {
             background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
             color: white;
@@ -103,6 +111,10 @@
                 <label for="mile_seconds">1-Mile Time Trial Seconds:</label>
                 <input type="number" name="mile_seconds" id="mile_seconds" min="0" max="59">
             </div>
+
+            <label for="walk_interval">Walk Interval (seconds):</label>
+            <input type="number" name="walk_interval" id="walk_interval" min="10" max="300" placeholder="30">
+            <div class="optional-note">Optional: Leave empty to use default 30 seconds</div>
 
             <button type="submit">Calculate Pacing</button>
         </form>

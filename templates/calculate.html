@@ -115,15 +115,49 @@
 
         #milestones_table .dataframe th:nth-child(2),
         #milestones_table .dataframe td:nth-child(2) {
-            text-align: left;
-            min-width: 200px;
+            text-align: center;
         }
 
         #milestones_table .dataframe th:nth-child(3),
-        #milestones_table .dataframe td:nth-child(3),
-        #milestones_table .dataframe th:nth-child(4),
-        #milestones_table .dataframe td:nth-child(4) {
-            text-align: center;
+        #milestones_table .dataframe td:nth-child(3) {
+            text-align: left;
+            min-width: 250px;
+        }
+
+        /* Training speeds table specific styling */
+        #training_speeds_table {
+            width: auto;
+            max-width: 900px;
+            margin: 1rem auto 2rem auto;
+        }
+
+        #training_speeds_table th, #training_speeds_table td {
+            padding: 10px 12px;
+            font-size: 0.9rem;
+        }
+
+        #training_speeds_table .dataframe th {
+            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        #training_speeds_table .dataframe td {
+            background-color: transparent;
+            color: #1e293b;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        #training_speeds_table .dataframe tr:nth-child(even) td {
+            background-color: transparent;
+        }
+
+        #training_speeds_table .dataframe tr:hover td {
+            background-color: rgba(241, 245, 249, 0.5);
+            transition: background-color 0.2s ease;
         }
 
         ul {
@@ -201,7 +235,10 @@
             </div>
         </div>
         
-        <h2>Speed Intervals Table</h2>
+        <h2>Other Race Targets</h2>
+        {{ training_speeds_html | safe }}
+
+        <h2>Interval Speed Summaries</h2>
         <div class="walk-note">{{ walk_interval_note }}</div>
         {{ table_html | safe }}
 
